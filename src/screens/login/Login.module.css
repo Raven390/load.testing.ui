@@ -1,0 +1,36 @@
+.LoginPage {
+    height: 100vh;
+    display: flex;
+    color: white;
+}
+
+.LoginPageLogo {
+    width: 40%;
+    background-color: cadetblue;
+}
+
+.LoginPageForm {
+    width: 60%;
+    background-color: rgba(0, 0, 0, 0.89);
+    padding: 25px 40px;
+    overflow: auto;
+    display: flex;
+}
+
+.TextFieldsForm {
+    position: relative;
+    top: 35%;
+    left: 30%;
+    height: 50vh;
+    width: 70%;
+}
+
+.LoginPageFormMessage {
+    font-size: 2em;
+    font-weight: 400;
+    padding-bottom: 20px;
+}
+
+.SubmitButton {
+    width: 100%;
+}
