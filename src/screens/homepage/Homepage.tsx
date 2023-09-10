@@ -1,11 +1,9 @@
-import styles from './Homepage.module.css'
-import { useKeycloak } from '@react-keycloak/web';
+import {useKeycloak} from '@react-keycloak/web';
 import React from 'react';
-import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
-import type { MenuProps } from 'antd';
-import {Breadcrumb, Layout, Menu, theme, Button} from 'antd';
+import {LaptopOutlined, NotificationOutlined, UserOutlined} from '@ant-design/icons';
+import type {MenuProps} from 'antd';
+import {Breadcrumb, Button, Layout, Menu, theme} from 'antd';
 import {parseJwt} from "../../utils/parse-jwt";
-
 
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -41,8 +39,7 @@ const Homepage: React.FC = () => {
         token: { colorBgContainer },
     } = theme.useToken();
     const {keycloak} = useKeycloak();
-    var keycloakToken = keycloak.token != null ? keycloak.token.toString() : '';
-    console.log(keycloakToken)
+    let keycloakToken = keycloak.token != null ? keycloak.token.toString() : '';
 
 
     return (
@@ -56,7 +53,7 @@ const Homepage: React.FC = () => {
                     <Button type="link" style={{color:"white"}}>
                         {parseJwt(keycloakToken).preferred_username}
                     </Button>
-                    <Button type="primary" onClick={() => {void keycloak.logout()}}>
+                    <Button type="primary" onClick={() => {keycloak.logout().then(() => keycloak.login())}}>
                         Logout
                     </Button>
                 </div>
