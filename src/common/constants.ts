@@ -1,6 +1,3 @@
-// API URLs & SETTINGS
-
-
 export const NO_DATA = '-';
 
 export const API_URL: string = process.env.REACT_APP_API_URL != null
