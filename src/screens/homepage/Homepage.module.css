@@ -1,0 +1,38 @@
+.buttonMenu {
+    color: white;
+    font-size: 16px;
+    width: 64px;
+    height: 64px;
+    padding: 0;
+    margin: 0;
+}
+
+.buttonMenuIcon {
+    color: white;
+}
+
+.buttonMenuIcon:hover {
+    color: white;
+}
+
+.buttonLogout {
+    margin: 0;
+}
+
+.labelUsername {
+    color: white;
+    margin: 0;
+}
+
+.header {
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 100%;
+    height: 70px;
+    color: cadetblue;
+}
+
+
