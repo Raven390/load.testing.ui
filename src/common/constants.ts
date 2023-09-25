@@ -1,6 +1,6 @@
 export const NO_DATA = '-';
 
-export const API_URL: string = process.env.REACT_APP_API_URL ?? '';
+export const API_URL: string = process.env.REACT_APP_API_URL ?? 'http://localhost:8081/app-web/v1/';
 
 export const API_TIMEOUT: number = process.env.REACT_APP_API_TIMEOUT != null
     ? +process.env.REACT_APP_API_TIMEOUT
