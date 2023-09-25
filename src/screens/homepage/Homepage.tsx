@@ -1,8 +1,6 @@
 import React from 'react';
-import {Image, Layout} from 'antd';
+import {Image} from 'antd';
 import image from "../../public/1.jpg"
-
-const { Content } = Layout;
 
 
 const Homepage: React.FC = () => {

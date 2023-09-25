@@ -3,9 +3,8 @@ import {ROUTE} from "./common/routes";
 
 import Login from "./screens/login/Login";
 import React from "react";
-import {TestScreen} from "./screens/test/Test";
+import {TestScreen} from "./screens/test/TestCasePage";
 import Homepage from "./screens/homepage/Homepage";
-
 
 
 function AppRoutes() {

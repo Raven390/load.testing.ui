@@ -1,5 +1,5 @@
-import { RootStore, RootStoreModel } from "./root-store";
-import { unprotect } from "mobx-state-tree";
+import {RootStore, RootStoreModel} from "./root-store";
+import {unprotect} from "mobx-state-tree";
 import {Environment} from "../environment";
 
 export async function createEnvironment() {
