@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {ReactKeycloakProvider} from "@react-keycloak/web";
 import keycloak from "./services/keycloak";
 import {RootStore} from "./stores/root-store/root-store";
@@ -12,6 +12,8 @@ function App() {
     const [rootStore, setRootStore] = React.useState<RootStore | undefined>(
         undefined
     );
+
+    const [keycloakReady, setKeycloakReady] = useState(false);
 
     useEffect(() => {
         setupRootStore()
@@ -27,7 +29,7 @@ function App() {
 
     return (
         <>
-            <ReactKeycloakProvider authClient={keycloak} onEvent={(eventType) => {
+            <ReactKeycloakProvider authClient={keycloak} initOptions={{onLoad: 'login-required'}}  onEvent={(eventType) => {
                 switch (eventType) {
                     case 'onAuthRefreshError': {
                         const url = getCookie('redirectUrl');
@@ -39,6 +41,7 @@ function App() {
                     }
 
                     case 'onReady':
+                        setKeycloakReady(true);
                         if (!keycloak.authenticated) {
                             void keycloak.login();
                         }
@@ -61,7 +64,7 @@ function App() {
             }}
             >
                 <RootStoreProvider value={rootStore}>
-                    <MainBrowserRouter/>
+                    {MainBrowserRouter(keycloakReady)}
                 </RootStoreProvider>
             </ReactKeycloakProvider>
         </>
