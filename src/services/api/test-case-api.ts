@@ -1,8 +1,9 @@
-import { ApiResponse, ApisauceInstance, create } from 'apisauce';
+import {ApiResponse, ApisauceInstance, create} from 'apisauce';
 import {API_URL} from "../../common/constants";
 import keycloak from "../keycloak";
 import {DefaultResponse} from "../../models/api/DefaultResponse";
 import {ITestCaseModel} from "../../models/api/TestCaseModel";
+import {TestCasesModel} from "../../stores/test-case-store";
 
 
 export class TestCaseApi {
@@ -72,7 +73,18 @@ export class TestCaseApi {
 
 
         return response.data;
+    }
 
+    async deleteTestCaseById(id: string) {
+        type TestCaseResponse = Omit<DefaultResponse, "data"> & {
+            data: ITestCaseModel[];
+        };
 
+        const response: ApiResponse<any> = await this.apisauce.delete<TestCaseResponse>(`/test/delete/${id}`)
+
+        if (!response.ok) {
+            return response.status;
+        }
+        return response.data;
     }
 }

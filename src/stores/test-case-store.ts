@@ -9,6 +9,7 @@ export const TestCasesModel = types
     .props({
         isShowEditTestCaseModal: types.optional(types.boolean, false),
         isShowAddTestCaseModal: types.optional(types.boolean, false),
+        isShowDeleteTestCaseModal: types.optional(types.boolean, false),
         currentTestCaseId: types.optional(types.string, ""),
         testCases: types.optional(types.array(TestCaseModel), []),
     })
@@ -35,6 +36,12 @@ export const TestCasesModel = types
         hideAddTestCaseModal() {
             self.isShowAddTestCaseModal = false;
         },
+        showDeleteTestCaseModal() {
+            self.isShowDeleteTestCaseModal = true;
+        },
+        hideDeleteTestCaseModal() {
+            self.isShowDeleteTestCaseModal = false;
+        },
     }))
     .actions((self) => ({
         reset() {
@@ -56,6 +63,14 @@ export const TestCasesModel = types
                     );
                 });
                 console.log(self.testCases);
+            }
+        }),
+        deleteTestCase: flow(function* () {
+            console.log("Delete test case by id: " + self.currentTestCaseId);
+            const result = yield self.environment.testCaseApi.deleteTestCaseById(self.currentTestCaseId);
+            console.log(result.data);
+            if (result) {
+                self.testCases.splice(0);
             }
         }),
 

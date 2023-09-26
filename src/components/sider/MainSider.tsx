@@ -1,5 +1,5 @@
 import {Button, Layout, Menu} from "antd";
-import {HomeOutlined, BugOutlined, ControlOutlined, MenuFoldOutlined, MenuUnfoldOutlined} from "@ant-design/icons";
+import {BugOutlined, ControlOutlined, HomeOutlined, MenuFoldOutlined, MenuUnfoldOutlined} from "@ant-design/icons";
 import styles from "../../screens/homepage/Homepage.module.css";
 import React, {useState} from "react";
 import {Link} from "react-router-dom";

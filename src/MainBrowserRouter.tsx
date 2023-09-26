@@ -12,13 +12,14 @@ import {MainHeader} from "./components/header/Header";
 export default function MainBrowserRouter() {
     return (
         <BrowserRouter>
-            <div className="App" >
+            <div className="App">
                 <Layout hasSider>
                     <MainSider/>
-                    <Layout className="site-layout" style={{transition: 'width 0.2s', marginLeft: 80}}>
+                    <Layout className="site-layout"
+                            style={{transition: 'width 0.2s', marginLeft: 80, minHeight: "100vh"}}>
                         <MainHeader/>
-                        <Layout className="App-layout" hasSider
-                                style={{ height: "100%",transition: 'width 0.2s'}}>
+                        <Layout className="App-layout"
+                                style={{height: "100%", transition: 'width 0.2s', marginLeft: 100, marginRight: 100}}>
                             <Content className="App-content"
                                      style={{padding: '0 20px', overflow: "initial"}}>
                                 <AppRoutes/>
