@@ -2,13 +2,15 @@ import {Button, Layout, Menu} from "antd";
 import {BugOutlined, ControlOutlined, HomeOutlined, MenuFoldOutlined, MenuUnfoldOutlined} from "@ant-design/icons";
 import styles from "../../screens/homepage/Homepage.module.css";
 import React, {useState} from "react";
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import {ROUTE} from "../../common/routes";
 
 const { Sider } = Layout;
 
 export default function MainSider() {
     const [collapsed, setCollapsed] = useState(true);
+    const location = useLocation();
+
     return (
     <Sider style={{position: "fixed", height: "100vh", transition: 'width 0.2s', bottom: "0", top: "0px"}} theme="dark" width={200}
            trigger={null} collapsible collapsed={collapsed}>
@@ -24,17 +26,18 @@ export default function MainSider() {
         <Menu
             theme="dark"
             mode="inline"
-            defaultSelectedKeys={['1']}
+            defaultSelectedKeys={[ROUTE.home]}
+            selectedKeys={[location.pathname]}
         >
-            <Menu.Item key={1} icon={<HomeOutlined/>} title={"Домой"} >
+            <Menu.Item key={ROUTE.home} icon={<HomeOutlined/>} title={"Домой"} >
                 Домой
                 <Link to={ROUTE.home}/>
             </Menu.Item>
-            <Menu.Item key={2} icon={<BugOutlined/>} title={"Тесты"}>
+            <Menu.Item key={ROUTE.test} icon={<BugOutlined/>} title={"Тесты"}>
                 Тесты
                 <Link to={ROUTE.test}/>
             </Menu.Item>
-            <Menu.Item key={3} icon={<ControlOutlined/>} title={"Настройки"}>
+            <Menu.Item key={ROUTE.settings} icon={<ControlOutlined/>} title={"Настройки"}>
                 Настройки
                 <Link to={ROUTE.settings}/>
             </Menu.Item>

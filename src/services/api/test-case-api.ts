@@ -3,7 +3,6 @@ import {API_URL} from "../../common/constants";
 import keycloak from "../keycloak";
 import {DefaultResponse} from "../../models/api/DefaultResponse";
 import {ITestCaseModel} from "../../models/api/TestCaseModel";
-import {TestCasesModel} from "../../stores/test-case-store";
 
 
 export class TestCaseApi {

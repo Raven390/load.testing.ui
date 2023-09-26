@@ -1,5 +1,5 @@
 import {BrowserRouter} from "react-router-dom";
-import {Layout} from "antd";
+import {Layout, Space, Spin} from "antd";
 import MainSider from "./components/sider/MainSider";
 
 import {Content} from "antd/es/layout/layout";
@@ -7,7 +7,6 @@ import AppRoutes from "./app-routes";
 import MainFooter from "./components/footer/Footer";
 import React from "react";
 import {MainHeader} from "./components/header/Header";
-import { Space, Spin } from 'antd';
 
 
 export default function MainBrowserRouter(keycloakReady: boolean) {
