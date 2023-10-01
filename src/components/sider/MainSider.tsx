@@ -7,9 +7,21 @@ import {ROUTE} from "../../common/routes";
 
 const { Sider } = Layout;
 
+const getMenuKeyForPath = (path) => {
+    // Здесь вы можете определить логику соответствия
+    // пути ключам меню в зависимости от ваших требований.
+    // Например, вы можете убрать последний сегмент пути.
+    const segments = path.split('/');
+    if (segments.length > 2) {
+        return `/${segments.slice(1, -1).join('/')}`;
+    }
+    return path;
+};
+
 export default function MainSider() {
     const [collapsed, setCollapsed] = useState(true);
     const location = useLocation();
+    const selectedKeys = [getMenuKeyForPath(location.pathname)];
 
     return (
     <Sider style={{position: "fixed", height: "100vh", transition: 'width 0.2s', bottom: "0", top: "0px"}} theme="dark" width={200}
@@ -27,7 +39,7 @@ export default function MainSider() {
             theme="dark"
             mode="inline"
             defaultSelectedKeys={[ROUTE.home]}
-            selectedKeys={[location.pathname]}
+            selectedKeys={selectedKeys}
         >
             <Menu.Item key={ROUTE.home} icon={<HomeOutlined/>} title={"Домой"} >
                 Домой

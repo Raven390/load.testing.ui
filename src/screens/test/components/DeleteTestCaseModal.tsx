@@ -16,10 +16,10 @@ export const DeleteTestCaseModal = observer(() => {
         store.hideDeleteTestCaseModal();
     };
 
-    const onClick = () => {
+    const onClick = async () => {
         if (store.currentTestCaseId) {
-            void store.deleteTestCase();
-            void store.load();
+            await store.deleteTestCase();
+            await store.load();
         }
         store.hideDeleteTestCaseModal();
     };

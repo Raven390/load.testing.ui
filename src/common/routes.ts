@@ -4,4 +4,6 @@ export enum ROUTE {
     test = '/test',
     settings = '/settings',
     forbidden = '/forbidden',
+    editTestCase = '/test/edit',
+    viewTestCase = '/test/view'
 }
