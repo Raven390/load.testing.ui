@@ -3,7 +3,9 @@ import {API_URL} from "../../common/constants";
 import keycloak from "../keycloak";
 import {DefaultResponse} from "../../models/api/DefaultResponse";
 import {ITestCaseModel} from "../../models/api/TestCaseModel";
-import {TestCasesModel} from "../../stores/test-case-store";
+import {stringify} from "querystring";
+import {IMetricsModel} from "../../models/api/MetricsModel";
+import {IRunTestCaseRequestModel} from "../../models/api/RunTestCaseRequestModel";
 
 
 export class TestCaseApi {
@@ -81,6 +83,53 @@ export class TestCaseApi {
         };
 
         const response: ApiResponse<any> = await this.apisauce.delete<TestCaseResponse>(`/test/delete/${id}`)
+
+        if (!response.ok) {
+            return response.status;
+        }
+        return response.data;
+    }
+
+    async saveTestCase(testCase: ITestCaseModel) {
+        type TestCaseResponse = Omit<DefaultResponse, "data"> & {
+            data: ITestCaseModel[];
+        };
+
+        let body = JSON.stringify(testCase);
+        console.log(body);
+
+        const response: ApiResponse<any> = await this.apisauce.post<TestCaseResponse>(`/test/save`, testCase);
+
+        if (!response.ok) {
+            return response.status;
+        }
+        return response.data;
+    }
+
+    async getMetricsData(testCaseId: string) {
+        console.log("Sending GET Metrics request: " + testCaseId);
+        type TestCaseResponse = Omit<DefaultResponse, "data"> & {
+            data: IMetricsModel[];
+        };
+
+        const response: ApiResponse<any> = await this.apisauce.get<TestCaseResponse>(`test/${testCaseId}/metrics`);
+        console.log(response.data);
+        if (!response.ok) {
+            return response.status;
+        }
+
+        return response.data;
+    }
+
+    async startTestCase(id: string, startTestCaseRequest: IRunTestCaseRequestModel) {
+        type TestCaseResponse = Omit<DefaultResponse, "data"> & {
+            data: string;
+        };
+
+        let body = JSON.stringify(startTestCaseRequest);
+        console.log(body);
+
+        const response: ApiResponse<any> = await this.apisauce.post<TestCaseResponse>(`/test/start/${id}`, startTestCaseRequest);
 
         if (!response.ok) {
             return response.status;

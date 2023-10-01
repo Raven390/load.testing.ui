@@ -17,6 +17,13 @@ export const KEYCLOAK_REALM: string
 export const KEYCLOAK_CLIENT_ID: string
     = process.env.REACT_APP_KEYCLOAK_CLIENT_ID ?? '';
 
-
+export const HTTP_METHOD_GET: string = 'GET';
+export const HTTP_METHOD_HEAD: string = 'HEAD';
+export const HTTP_METHOD_POST: string = 'POST';
+export const HTTP_METHOD_PUT: string = 'PUT';
+export const HTTP_METHOD_PATCH: string = 'PATCH';
+export const HTTP_METHOD_DELETE: string = 'DELETE';
+export const HTTP_METHOD_OPTIONS: string = 'OPTIONS';
+export const HTTP_METHOD_TRACE: string = 'TRACE';
 
 
